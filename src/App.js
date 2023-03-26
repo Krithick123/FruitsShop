@@ -1,24 +1,38 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Filter from './filter/Filter';
+import Footer from './items/Footer';
+import FruitItems from './items/FruitItems';
+import AppBar from './navbar/AppBar';
+
+var scrollToTopBtn = document.getElementById("scroll-to-top-btn");
+
+window.onscroll = function() {
+  scrollFunction();
+};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    scrollToTopBtn.style.display = "block";
+  } else {
+    scrollToTopBtn.style.display = "none";
+  }
+}
+
+scrollToTopBtn.addEventListener("click", function() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <AppBar/>
+      <Filter/>
+      <FruitItems/>
+      <Footer/>
+      <button className=' bg-green-500 text-white hover:bg-slate-400' id="scroll-to-top-btn">Scroll to Top</button>
+    </>
   );
 }
 
